@@ -7,9 +7,25 @@ const AddToy = () => {
   } = useForm();
 
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+   
+    fetch("http://localhost:5000/alltoys", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          console.log(result);
+        });
+   
+   
+   
+   
+    console.log(data)
+};
 
-  
+
 
   return (
     <div className="my-16 mx-auto flex flex-col items-center justify-center">
