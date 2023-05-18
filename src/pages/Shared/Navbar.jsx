@@ -39,7 +39,7 @@ const Navbar = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <NavLink to="/" aria-label="Home" title="Home">
+                <NavLink to="/" aria-label="Home" className="bg-purple-300" title="Home">
                   Home
                 </NavLink>
               </li>
@@ -49,6 +49,28 @@ const Navbar = () => {
                   Blog
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/alltoys" aria-label="All-Toys" title="All Toys">
+                All Toys
+                </NavLink>
+              </li>
+              
+              {
+                user && (
+                <span >   <li>
+                <NavLink to="/addtoy" aria-label="Add-Toy" title="Add Toy">
+                 Add Toy
+                </NavLink>
+              </li>
+                <li>
+                <NavLink to="/mytoy" aria-label="My-Toy" title="MyToy">
+                 My Toy
+                </NavLink>
+              </li></span>
+           
+                )
+              }
+              
             </ul>
           </div>
           <Link to="/" className="btn btn-ghost normal-case text-xl">
@@ -71,7 +93,27 @@ const Navbar = () => {
                 Blog
               </NavLink>
             </li>
-            <li></li>
+
+            <li>
+                <NavLink to="/alltoys" aria-label="All-Toys" title="All Toys">
+                  All Toys
+                </NavLink>
+              </li>
+              {
+                user && (
+                <span className="flex">   <li>
+                <NavLink to="/addtoy" aria-label="Add-Toy" title="Add Toy">
+                 Add Toy
+                </NavLink>
+              </li>
+                <li>
+                <NavLink to="/mytoy" aria-label="My-Toy" title="MyToy">
+                 My Toys
+                </NavLink>
+              </li></span>
+           
+                )
+              }
           </ul>
         </div>
         <div className="navbar-end  lg:mr-20">
