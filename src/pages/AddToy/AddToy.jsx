@@ -56,7 +56,7 @@ const AddToy = () => {
           </label>
           <input
           {...register("photoUrl", { required: true })}
-          placeholder="PhotoUrl"
+          placeholder="Photo URL"
           className="input input-bordered input-secondary w-96 "
         />
         </div>
@@ -82,11 +82,11 @@ const AddToy = () => {
         </div>
         <div>
           <label className="label">
-            <span>Category</span>
+            <span>Seller Phone</span>
           </label>
           <input
-          {...register("category", { required: true })}
-          placeholder="Category"
+          {...register("sellerphone", { required: true })}
+          placeholder="Seller Phone"
           className="input input-bordered input-secondary w-96 "
         />
         </div>
@@ -100,11 +100,17 @@ const AddToy = () => {
           <label className="label">
             <span>Sub Category</span>
           </label>
-          <input
+          <select className="input input-bordered input-secondary w-96" {...register("subcategory")}>
+              <option value="Math">Math</option>
+              <option value="Science">Science</option>
+              <option value="Engineering">Engineering</option>
+            
+            </select>
+       {/*    <input
           {...register("subcategory", { required: true })}
           placeholder="Sub Category"
           className="input input-bordered input-secondary w-96 "
-        />
+        /> */}
         </div> 
         <div>
           <label className="label">
@@ -141,8 +147,8 @@ const AddToy = () => {
             <span>Details Description</span>
           </label>
           <input
-          {...register("photoUrl", { required: true })}
-          placeholder="PhotoUrl"
+          {...register("details", { required: true })}
+          placeholder="Details Description"
           className="input input-bordered input-secondary w-96 "
         />
         </div> 
