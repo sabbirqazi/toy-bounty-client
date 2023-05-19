@@ -10,20 +10,21 @@ const AllToys = () => {
         <table className="table-auto w-full bg-white shadow-md">
           <thead>
             <tr>
+              <th className="px-6 py-4">#</th>
               <th className="px-6 py-4">Seller Name</th>
               <th className="px-6 py-4">Toy Name</th>
               <th className="px-6 py-4">Sub-category</th>
               <th className="px-6 py-4">Price</th>
               <th className="px-6 py-4">Available Quantity</th>
-              <th className="px-6 py-4"></th>
+              <th className="px-6 py-4">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {alltoys?.map((toys) => (
+            {alltoys?.map((toys, index) => (
               <tr
                 key={toys._id}
                 className="bg-gray-100 hover:bg-gray-200 text-center transition-colors duration-200"
-              >
+              > <td className="px-6 py-4">{index +1}</td>
                 <td className="px-6 py-4">
                   <h3 className="font-semibold">{toys.sellername}</h3>
                 </td>

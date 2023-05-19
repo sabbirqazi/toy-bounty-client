@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../providers/AuthProvider";
 const AddToy = () => {
+    const {user} = useContext(AuthContext)
   const {
     register,
     handleSubmit,
@@ -66,8 +69,10 @@ const AddToy = () => {
           </label>
           <input
             {...register("sellername")}
+            value={user?.displayName}
             placeholder="Seller Name"
             className="input input-bordered input-secondary w-96"
+
           />
         </div>
         <div>
@@ -76,6 +81,7 @@ const AddToy = () => {
           </label>
           <input
           {...register("selleremail", { required: true })}
+          value={user?.email}
           placeholder="Seller Email"
           className="input input-bordered input-secondary w-96 "
         />
