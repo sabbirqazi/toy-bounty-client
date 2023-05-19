@@ -1,55 +1,45 @@
-import { useEffect, useState } from "react";
+/* import { useEffect, useState } from "react"; */
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import 'react-tabs/style/react-tabs.css';
+import "react-tabs/style/react-tabs.css";
+/* import CategoryToy from "../CategoryToy/CategoryToy"; */
+import MathTab from "../MathTab/MathTab";
 
 const ShopByCategory = () => {
-    const [toys, setToys] = useState([]);
-    const [activeTab, setActiveTab] = useState("Math");
+/*   const [toys, setToys] = useState([]);
+  const [activeTab, setActiveTab] = useState("");
 
-
-    useEffect(() => {
-        fetch(`http://localhost:5000/allJobsByCategory/${activeTab}`)
-          .then((res) => res.json())
-          .then((result) => {
-            setToys(result);
-          });
-      }, [activeTab]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/alltoys/${activeTab}`)
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        setToys(result);
+      });
+  }, [activeTab]);
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
-  };
-    return (
-        <div>
-              <Tabs>
-    <TabList>
-      <Tab  onClick={() => handleTabClick("Math")}
-          className={` ${
-            activeTab == "Math" ? " bg-danger text-white" : ""
-          }`}
-      >Math Toys</Tab>
-      <Tab onClick={() => handleTabClick("Engineering")}
-          className={`${
-            activeTab == "Engineering" ? " bg-danger text-white" : ""
-          }`}
-      >Engineering Toys</Tab>
-      <Tab onClick={() => handleTabClick("Science")}
-          className={`${
-            activeTab == "Science" ? " bg-danger text-white" : ""
-          }`}
-      >Science Toys</Tab>
-    </TabList>
+  }; */
+  return (
+    <div>
+      <Tabs>
+        <TabList>
+          <Tab>
+            Math Toys
+          </Tab>
+          <Tab >
+            Engineering Toys
+          </Tab>
+          <Tab >
+            Science Toys
+          </Tab>
+        </TabList>
 
-    <TabPanel>
-      <h2>Any content 1</h2>
-    </TabPanel>
-    <TabPanel>
-      <h2>Any content 2</h2>
-    </TabPanel>
-    <TabPanel>
-      <h2>Any content 3</h2>
-    </TabPanel>
-  </Tabs>
-        </div>
-    );
+        <TabPanel>
+         <MathTab></MathTab>
+        </TabPanel>
+      </Tabs>
+    </div>
+  );
 };
 
 export default ShopByCategory;
