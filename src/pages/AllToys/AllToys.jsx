@@ -1,44 +1,48 @@
 import { useLoaderData } from "react-router-dom";
 
-
 const AllToys = () => {
-    const alltoys = useLoaderData();
-    return (
-        <div>
-            <h1 className="text-5xl text-center mt-10">All Toy show here  {alltoys.length}</h1>
+  const alltoys = useLoaderData();
+  return (
+    <div>
+      <h1 className="text-5xl text-center mt-10">All Toys</h1>
 
-            <div className="m-20 grid grid-cols-4">
-                {
-                    alltoys.map(toys => 
-                        <div key={toys._id} className="bg-white rounded-lg shadow-lg p-6">
-                        <div className="flex justify-between mb-4">
-                          <h3 className="text-lg font-semibold">{toys.sellername}</h3>
-                        </div>
-                        <div className="mb-2">
-                          <p className="text-gray-600 mb-1">Toy Name:</p>
-                          <p className="font-semibold">{toys.name}</p>
-                        </div>
-                        <div className="mb-2">
-                          <p className="text-gray-600 mb-1">Sub-category:</p>
-                          <p className="font-semibold">{toys.subcategory}</p>
-                        </div>
-                        <div className="mb-2">
-                          <p className="text-gray-600 mb-1">Price:</p>
-                          <p className="font-semibold">{toys.price}</p>
-                        </div>
-                        <div className="mb-2">
-                          <p className="text-gray-600 mb-1">Available Quantity:</p>
-                          <p className="font-semibold">{toys.quantity}</p>
-                        </div>
-                        <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
-                          View Details
-                        </button>
-                      </div>
-                      
-                      )}
-            </div>
-        </div>
-    );
+      <div className="m-10">
+        <table className="table-auto w-full bg-white shadow-md">
+          <thead>
+            <tr>
+              <th className="px-6 py-4">Seller Name</th>
+              <th className="px-6 py-4">Toy Name</th>
+              <th className="px-6 py-4">Sub-category</th>
+              <th className="px-6 py-4">Price</th>
+              <th className="px-6 py-4">Available Quantity</th>
+              <th className="px-6 py-4"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {alltoys?.map((toys) => (
+              <tr
+                key={toys._id}
+                className="bg-gray-100 hover:bg-gray-200 text-center transition-colors duration-200"
+              >
+                <td className="px-6 py-4">
+                  <h3 className="font-semibold">{toys.sellername}</h3>
+                </td>
+                <td className="px-6 py-4">{toys.name}</td>
+                <td className="px-6 py-4">{toys.subcategory}</td>
+                <td className="px-6 py-4">{toys.price}</td>
+                <td className="px-6 py-4">{toys.quantity}</td>
+                <td className="px-6 py-4">
+                  <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+                    View Details
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 export default AllToys;

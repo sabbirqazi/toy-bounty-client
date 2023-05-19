@@ -63,7 +63,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
                 <li>
-                <NavLink to="/mytoy" aria-label="My-Toy" title="MyToy">
+                <NavLink to="/mytoys" aria-label="My-Toy" title="MyToy">
                  My Toy
                 </NavLink>
               </li></span>
@@ -107,7 +107,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
                 <li>
-                <NavLink to="/mytoy" aria-label="My-Toy" title="MyToy">
+                <NavLink to="/mytoys" aria-label="My-Toy" title="MyToy">
                  My Toys
                 </NavLink>
               </li></span>

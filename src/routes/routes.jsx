@@ -11,6 +11,9 @@ import MyToy from "../pages/MyToy/MyToy";
 
 import Home from "../pages/Home/Home/Home";
 
+/* import ViewDetails from "../pages/Shared/ViewDetails";
+import PrivateRoute from "./PrivateRoute"; */
+
 
 const router = createBrowserRouter([
     {
@@ -21,6 +24,7 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <Home></Home>,
               },
+         
         
               {
                 path: "/blog",
@@ -36,7 +40,7 @@ const router = createBrowserRouter([
                 element: <AddToy></AddToy>,
               },
               {
-                path: "/mytoy",
+                path: "/mytoys",
                 element: <MyToy></MyToy>,
               },
             ]

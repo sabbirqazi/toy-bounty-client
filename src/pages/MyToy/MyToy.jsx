@@ -1,5 +1,6 @@
 
 const MyToy = () => {
+    
     return (
         <div>
             <h1>My selected Toy</h1>

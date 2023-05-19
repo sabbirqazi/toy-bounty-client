@@ -1,12 +1,11 @@
-/* eslint-disable react/prop-types */
-
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
+const ScienceTab = () => {
 
-const EngineeringTab = () => {
     const [toys, setToys] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/alltoys/Engineering`)
+        fetch(`http://localhost:5000/alltoys/Science`)
           .then((res) => res.json())
           .then((result) => {
             console.log(result);
@@ -15,7 +14,7 @@ const EngineeringTab = () => {
       }, []);
     return (
         <div>
-     <div className="flex justify-center gap-10 my-10">
+           <div className="flex justify-center gap-10 my-10">
         {toys?.map(
           (toy) => (
             <div key={toy._id} className="card w-96 bg-base-100 shadow-xl">
@@ -31,14 +30,18 @@ const EngineeringTab = () => {
                 <p>Price: ${toy.price}</p>
                 <p>Rating: {toy.rating}</p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary">View Details</button>
+                <Link to={`/${toy?.id}`}>
+                    <button className="btn btn-primary ">
+                     View Details
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
           ))}
       </div>
-    </div>
+        </div>
     );
 };
 
-export default EngineeringTab;
+export default ScienceTab;
