@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-import UpdateToys from "../../UpdateToys/UpdateToys";
-import { Link } from "react-router-dom";
+/* import UpdateToys from "../../UpdateToys/UpdateToys";
+import { Link } from "react-router-dom"; */
+import ToysRow from "./ToysRow";
 
 const MyToy = () => {
   const { user } = useContext(AuthContext);
@@ -22,10 +23,10 @@ const MyToy = () => {
 
 //update data for specific user 
 
-const handleToyUpdate = (data) => {
+/* const handleToyUpdate = (data) => {
     console.log(data);
 
-  };
+  }; */
   const handleDelete = id => {
     const proceed = confirm('Are You sure you want to delete');
     if (proceed) {
@@ -61,33 +62,18 @@ const handleToyUpdate = (data) => {
         </tr>
       </thead>
       <tbody>
-        {toys.map((toy, index) => (
-          <tr key={toy._id} className="bg-gray-100 hover:bg-gray-200 text-center">
-            <td className="px-6 py-4">{index + 1}</td>
-            <td className="px-6 py-4">{toy.sellername}</td>
-            <td className="px-6 py-4">{toy.name}</td>
-            <td className="px-6 py-4">{toy.subcategory}</td>
-            <td className="px-6 py-4">{toy.price}</td>
-            <td className="px-6 py-4">{toy.quantity}</td>
-            <td className="px-6 py-4">
-            <Link to={`/${toy?._id}`}>
-                    <button className="btn btn-primary ">
-                     Edit
-                    </button>
-                  </Link>
-              
-             {/*  <UpdateToys 
-              toy={toy} 
-              handleToyUpdate={handleToyUpdate}
-              ></UpdateToys> */}
-            </td>
-            <td className="px-6 py-4">
-              <button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
-                Delete
-              </button>
-            </td>
-          </tr>
-        ))}
+
+
+        {toys.map((toy, index) => <ToysRow
+        key={toy._id}
+        toy={toy}
+        index={index}
+        handleDelete={handleDelete}
+        >
+
+        </ToysRow>
+         
+        )}
       </tbody>
     </table>
 
