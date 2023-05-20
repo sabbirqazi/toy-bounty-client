@@ -3,7 +3,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
-
+import logo from "../../assets/logo.svg"
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -15,7 +15,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="navbar bg-orange-700 shadow-xl">
+      <div className="navbar bg-cyan-700 shadow-xl">
         <div className="navbar-start lg:ml-20">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -73,11 +73,15 @@ const Navbar = () => {
               
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
-            <span className="mr-2">
-           {/* img */}
+          <Link to="/" className="btn btn-ghost normal-case text-xl text-cyan-500">
+            <span className="mr-1">
+              <img
+                className="w-10 h-10"
+                src={logo}
+                alt="logo"
+              />{" "}
             </span>{" "}
-           Toy Bounty
+            ToyBounty
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
