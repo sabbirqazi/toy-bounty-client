@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 
 const MathTab = () => {
   const [toys, setToys] = useState([]);
@@ -28,9 +30,11 @@ const MathTab = () => {
                 <h2 className="card-title">{toy.name}</h2>
                 <p>Price: ${toy.price}</p>
                 <p>Rating: {toy.rating}</p>
-                <div className="card-actions justify-end">
-                  <button className="btn btn-primary">View Details</button>
-                </div>
+                <Link to={`/alltoys/${toy?._id}`}>
+                    <button className="btn btn-primary btn-wide">
+                      View Details
+                    </button>
+                  </Link>
               </div>
             </div>
           ))}

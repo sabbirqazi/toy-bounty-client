@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+
 const ScienceTab = () => {
 
     const [toys, setToys] = useState([]);
@@ -30,11 +31,11 @@ const ScienceTab = () => {
                 <p>Price: ${toy.price}</p>
                 <p>Rating: {toy.rating}</p>
                 <div className="card-actions justify-end">
-                <Link to={`/${toy?.id}`}>
+             <Link to={`/alltoys/${toy?._id}`}>
                     <button className="btn btn-primary ">
                      View Details
                     </button>
-                  </Link>
+                  </Link> 
                 </div>
               </div>
             </div>

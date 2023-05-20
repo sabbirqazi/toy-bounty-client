@@ -1,11 +1,35 @@
-import { useLoaderData } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AllToys = () => {
   const alltoys = useLoaderData();
+  const [displayCount, setDisplayCount] = useState(20);
+  const [searchText, setSearchText] = useState("");
+
+  const handleSearch = () => {
+    fetch(`http://localhost:5000/getJobsByText/${searchText}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
+  const handleSeeMore = () => {
+    setDisplayCount(alltoys.length);
+  };
   return (
     <div>
       <h1 className="text-5xl text-center mt-10">All Toys</h1>
-
+      <div className=" p-2 text-center">
+        <input
+          onChange={(e) => setSearchText(e.target.value)}
+          type="text"
+          className="input input-bordered input-secondary w-48 "
+        />{" "}
+        <button onClick={handleSearch} className="btn btn-primary">
+          Search
+        </button>
+      </div>
       <div className="m-10">
         <table className="table-auto w-full bg-white shadow-md">
           <thead>
@@ -20,11 +44,13 @@ const AllToys = () => {
             </tr>
           </thead>
           <tbody>
-            {alltoys?.map((toys, index) => (
+            {alltoys?.slice(0, displayCount).map((toys, index) => (
               <tr
                 key={toys._id}
                 className="bg-gray-100 hover:bg-gray-200 text-center transition-colors duration-200"
-              > <td className="px-6 py-4">{index +1}</td>
+              >
+                {" "}
+                <td className="px-6 py-4">{index + 1}</td>
                 <td className="px-6 py-4">
                   <h3 className="font-semibold">{toys.sellername}</h3>
                 </td>
@@ -33,14 +59,22 @@ const AllToys = () => {
                 <td className="px-6 py-4">{toys.price}</td>
                 <td className="px-6 py-4">{toys.quantity}</td>
                 <td className="px-6 py-4">
-                  <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
-                    View Details
-                  </button>
+                  <Link to={`/alltoys/${toys?._id}`}>
+                    <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+                      View Details
+                    </button>
+                  </Link>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+      </div>
+
+      <div className="text-center my-5">
+        <button onClick={handleSeeMore} className="btn btn-primary">
+          See More
+        </button>
       </div>
     </div>
   );
