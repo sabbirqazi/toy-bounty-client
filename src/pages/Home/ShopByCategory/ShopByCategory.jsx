@@ -21,26 +21,33 @@ const ShopByCategory = () => {
   }, [tabIndex]); */
  
   return (
-    <div>
-      <Tabs /* selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)} */>
-        <TabList>
-          <Tab>Math Toys</Tab>
-          <Tab>Engineering Toys</Tab>
-          <Tab>Science Toys</Tab>
-        </TabList>
+    <div className="lg:mx-32 lg:my-10 m-5">
+    <h2 className="text-3xl font-bold text-center mb-8">Shop by Category</h2>
+    <Tabs>
+      <TabList className="flex justify-center">
+        <Tab className="px-4 py-2 border bg-purple-200 rounded-lg m-2 cursor-pointer hover:bg-purple-400">
+          Math Toys
+        </Tab>
+        <Tab className="px-4 py-2 border bg-purple-200 rounded-lg m-2 cursor-pointer hover:bg-purple-300">
+          Engineering Toys
+        </Tab>
+        <Tab className="px-4 py-2 border bg-purple-200 rounded-lg m-2 cursor-pointer hover:bg-purple-300">
+          Science Toys
+        </Tab>
+      </TabList>
 
-        <TabPanel>
-          <MathTab></MathTab>
-        </TabPanel>
+      <TabPanel>
+        <MathTab></MathTab>
+      </TabPanel>
 
-        <TabPanel>
-          <EngineeringTab></EngineeringTab>
-        </TabPanel>
-        <TabPanel>
-          <ScienceTab></ScienceTab>
-        </TabPanel>
-      </Tabs>
-    </div>
+      <TabPanel>
+        <EngineeringTab></EngineeringTab>
+      </TabPanel>
+      <TabPanel>
+        <ScienceTab></ScienceTab>
+      </TabPanel>
+    </Tabs>
+  </div>
   );
 };
 
