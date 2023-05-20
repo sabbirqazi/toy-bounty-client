@@ -1,110 +1,90 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
-import { useForm } from "react-hook-form";
 
-const UpdateToys = (props) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
+
+const UpdateToys = () => {
+  const toy = useLoaderData();
+
+  const { _id, price, quantity, details } = toy;
+
+  const handleToyUpdate = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const quantity = form.quantity.value;
+    const details = form.details.value;
+    const price = form.price.value;
+
+    const updatedToy = { price, quantity, details };
+
+    fetch(`http://localhost:5000/mytoys/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedToy),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Success!",
+            text: "toy Updated Successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
   };
+
   return (
     <div>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col space-y-5"
-      >
-        {errors.exampleRequired && <span>This field is required</span>}
+      <form onSubmit={handleToyUpdate} className="flex flex-col space-y-5">
         <div className="flex gap-10">
-          <div>
-            <div>
-              <label className="label">
-                <span>Name of Toy</span>
-              </label>
+          <div className="form-control md:w-1/2">
+            <label className="label">
+              <span className="label-text">Price</span>
+            </label>
+            <label className="input-group">
               <input
-                {...register("name")}
-                placeholder="Name of Toy"
-                className="input input-bordered input-secondary w-96"
-                defaultValue={props?.toy?.name}
-              />
-            </div>{" "}
-            */
-            <div>
-              <input
-                className="text-input hidden"
-                {...register("_id")}
-                value={props?.toy?._id}
-              />
-              <label className="label">
-                <span>Photo Url of Toy</span>
-              </label>
-              <input
-                {...register("photoUrl", { required: true })}
-                placeholder="Photo URL"
-                className="input input-bordered input-secondary w-96"
-                defaultValue={props?.toy?.photoUrl}
-              />
-            </div>
-            <div>
-              <label className="label">
-                <span>Seller Phone</span>
-              </label>
-              <input
-                {...register("sellerphone", { required: true })}
-                placeholder="Seller Phone"
-                className="input input-bordered input-secondary w-96"
-                defaultValue={props?.toy?.sellerphone}
-              />
-            </div>
-          </div>
-
-          <div>
-            <div>
-              <label className="label">
-                <span>Sub Category</span>
-              </label>
-              <select
-                className="input input-bordered input-secondary w-96"
-                {...register("subcategory")}
-                defaultValue={props?.toy?.subcategory}
-              >
-                <option value="Math">Math</option>
-                <option value="Science">Science</option>
-                <option value="Engineering">Engineering</option>
-              </select>
-            </div>
-            <div>
-              <label className="label">
-                <span>Price</span>
-              </label>
-              <input
-                {...register("price", { required: true })}
+                type="text"
+                name="price"
+                defaultValue={price}
                 placeholder="Price"
-                className="input input-bordered input-secondary w-96"
+                className="input input-bordered w-full"
               />
-            </div>
-            <div>
-              <label className="label">
-                <span>Available Quantity</span>
-              </label>
+            </label>
+          </div>
+          <div className="form-control md:w-1/2 ml-4">
+            <label className="label">
+              <span className="label-text">Available Quantity</span>
+            </label>
+            <label className="input-group">
               <input
-                {...register("quantity", { required: true })}
+                type="text"
+                name="quantity"
+                defaultValue={quantity}
                 placeholder="Available Quantity"
-                className="input input-bordered input-secondary w-96"
+                className="input input-bordered w-full"
               />
-            </div>
-            <div>
-              <label className="label">
-                <span>Ratings</span>
-              </label>
+            </label>
+          </div>
+          <div className="form-control md:w-1/2 ml-4">
+            <label className="label">
+              <span className="label-text">Details</span>
+            </label>
+            <label className="input-group">
               <input
-                {...register("rating", { required: true })}
-                placeholder="Ratings"
-                className="input input-bordered input-secondary w-96"
+                type="text"
+                name="details"
+                defaultValue={details}
+                placeholder="Details"
+                className="input input-bordered w-full"
               />
-            </div>
+            </label>
           </div>
         </div>
         <input className="btn btn-primary" type="submit" value="Update Toy" />
