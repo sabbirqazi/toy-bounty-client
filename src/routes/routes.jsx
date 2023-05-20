@@ -13,6 +13,7 @@ import Home from "../pages/Home/Home/Home";
 import UpdateToys from "../UpdateToys/UpdateToys";
 import PrivateRoute from "./PrivateRoute";
 import ViewDetails from "../pages/Shared/ViewDetails";
+import ErrorPage from "../pages/ErrorPage/Errorpage";
 
 /* import ViewDetails from "../pages/Shared/ViewDetails";
 import PrivateRoute from "./PrivateRoute"; */
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement:<ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
