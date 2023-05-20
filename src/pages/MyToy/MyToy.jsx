@@ -9,7 +9,7 @@ import ToysRow from "./ToysRow";
 const MyToy = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
-
+  const {_id} =toys;
   const url = `http://localhost:5000/mytoys?selleremail=${user?.email}`;
   /*  const [control, setControl] = useState(false); */
   //get the data using email for specific user
@@ -20,11 +20,11 @@ const MyToy = () => {
         console.log(data);
         setToys(data);
       });
-  }, [user]);
+  }, [user,url]);
 
   //update data for specific user
 
-  const handleDelete = (id) => {
+  const handleDelete = (_id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -35,15 +35,15 @@ const MyToy = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/mytoys/${id}`, {
-          method: "DELETE",
+        fetch(`http://localhost:5000/mytoys/${_id}`, {
+          method: "DELETE"
         })
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
             if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your Coffee has been deleted.", "success");
-              const remaining = toys.filter((toy) => toy._id !== toys?._id);
+              Swal.fire("Deleted!", "Your Toy has been deleted.", "success");
+              const remaining = toys.filter((toy) => toy._id !== _id);
               setToys(remaining);
             }
           });
