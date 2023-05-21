@@ -25,13 +25,13 @@ const ShopByCategory = () => {
     <h2 className="text-3xl font-bold text-center mb-8">Shop by Category</h2>
     <Tabs>
       <TabList className="flex justify-center">
-        <Tab className="px-4 py-2 border bg-purple-200 rounded-lg m-2 cursor-pointer hover:bg-purple-400">
+        <Tab className="px-4 py-2 border bg-purple-700 rounded-lg m-2 cursor-pointer hover:bg-purple-400">
           Math Toys
         </Tab>
-        <Tab className="px-4 py-2 border bg-purple-200 rounded-lg m-2 cursor-pointer hover:bg-purple-300">
+        <Tab className="px-4 py-2 border bg-purple-700 rounded-lg m-2 cursor-pointer hover:bg-purple-300">
           Engineering Toys
         </Tab>
-        <Tab className="px-4 py-2 border bg-purple-200 rounded-lg m-2 cursor-pointer hover:bg-purple-300">
+        <Tab className="px-4 py-2 border bg-purple-700 rounded-lg m-2 cursor-pointer hover:bg-purple-300">
           Science Toys
         </Tab>
       </TabList>

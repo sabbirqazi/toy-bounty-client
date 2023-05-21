@@ -17,13 +17,14 @@ const Gallery = () => {
   ];
 
   return (
-    <div className="lg:mx-32 lg:my-10 m-5">
-        <h2 className="text-3xl font-bold text-center mb-8">Toy Gallery</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+   
+    <div className="lg:mx-32 lg:my-10 m-5 rounded p-16  bg-gradient-to-r from-orange-300 to-rose-300 ">
+        <h2 className="text-3xl font-bold text-center mb-10">Toy Gallery</h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
       {images.map((image, index) => (
         <div
           key={index}
-          className="relative overflow-hidden rounded-md shadow-md"
+          className="relative overflow-hidden rounded-md shadow-md "
         >
           <img
             src={image}
@@ -34,6 +35,7 @@ const Gallery = () => {
       ))}
     </div>
   </div>
+
   );
 };
 

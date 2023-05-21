@@ -14,33 +14,28 @@ const EngineeringTab = () => {
             setToys(result);
           });
       }, []);
+
+      const displayedToys = toys.slice(0, 2); // Display only the first two toys
     return (
         <div>
-     <div className="flex justify-center gap-10 my-10">
-        {toys?.map(
-          (toy) => (
-            <div key={toy._id} className="card w-96 bg-base-100 shadow-xl">
-              <figure>
-                <img
-                  src={toy.photoUrl}
-                  alt="Toy"
-                  className="object-fit"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">{toy.name}</h2>
-                <p>Price: ${toy.price}</p>
-                <p>Rating: {toy.rating}</p>
-                <div className="card-actions justify-end">
+      <div className="flex flex-col ml-3 gap-4 md:flex-row md:justify-center my-10">
+        {displayedToys.map((toy) => (
+          <div key={toy._id} className="card w-64 bg-base-100 shadow-xl">
+            <figure>
+              <img src={toy.photoUrl} alt="Toy" className="object-fit" />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">{toy.name}</h2>
+              <p>Price: ${toy.price}</p>
+              <p>Rating: {toy.rating}</p>
+              <div className="card-actions justify-end">
                 <Link to={`/alltoys/${toy?._id}`}>
-                    <button className="btn btn-primary btn-wide">
-                      View Details
-                    </button>
-                  </Link>
-                </div>
+                  <button className="btn btn-primary">View Details</button>
+                </Link>
               </div>
             </div>
-          ))}
+          </div>
+        ))}
       </div>
     </div>
     );
