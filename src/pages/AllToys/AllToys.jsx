@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
+
 const AllToys = () => {
   const alltoys = useLoaderData();
   const [displayCount, setDisplayCount] = useState(20);
   const [searchText, setSearchText] = useState("");
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/getJobsByText/${searchText}`)
+    fetch(`http://localhost:5000/getToysByText/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -15,7 +16,7 @@ const AllToys = () => {
   };
 
   const handleSeeMore = () => {
-    setDisplayCount(alltoys.length);
+    setDisplayCount(alltoys?.length);
   };
   return (
     <div>
@@ -59,7 +60,7 @@ const AllToys = () => {
                 <td className="px-6 py-4">{toys.price}</td>
                 <td className="px-6 py-4">{toys.quantity}</td>
                 <td className="px-6 py-4">
-                  <Link to={`/alltoys/${toys?._id}`}>
+                <Link to={`/alltoys/${toys?._id}`}>
                     <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
                       View Details
                     </button>

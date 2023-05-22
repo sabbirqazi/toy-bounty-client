@@ -1,12 +1,13 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
-const MathTab = () => {
+const MathTab = ({tabIndex}) => {
   const [toys, setToys] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/alltoys/Math`)
+    fetch(`http://localhost:5000/alltoys1/${tabIndex}`)
       .then((res) => res.json())
       .then((result) => {
         console.log(result);

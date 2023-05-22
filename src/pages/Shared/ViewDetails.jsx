@@ -4,15 +4,17 @@ import { useParams } from "react-router-dom";
 
 
 const ViewDetails = () => {
-    const [toy, setToy] = useState([])
+    const [toy, setToy] = useState({})
     
     const { id } = useParams()
+    console.log(id)
     useEffect(() => {
         fetch(`http://localhost:5000/alltoys/${id}`)
           .then((res) => res.json())
           .then((data) => setToy(data));
-          console.log(toy)
+          
       }, []);
+      console.log(toy)
     return (
         <div>
            <h1>This is secret</h1>

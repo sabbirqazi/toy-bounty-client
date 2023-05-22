@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
-const EngineeringTab = () => {
+const EngineeringTab = ({tabIndex}) => {
     const [toys, setToys] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/alltoys/Engineering`)
+        fetch(`http://localhost:5000/alltoys1/${tabIndex}`)
           .then((res) => res.json())
           .then((result) => {
             console.log(result);
