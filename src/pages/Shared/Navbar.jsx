@@ -11,7 +11,7 @@ const Navbar = () => {
   const handleLogOut = () => {
     logOut()
       .then()
-      /* .catch((error) => console.log(error)); */
+      .catch((error) => console.log(error));
   };
   return (
     <>
@@ -125,9 +125,9 @@ const Navbar = () => {
             <div className="w-10 rounded-full mr-4">
               <img
                 className="cursor-pointer"
-                src={user.photoURL}
-                alt={user.displayName}
-                onMouseOver={(e) => (e.currentTarget.title = user.displayName)}
+                src={user?.photoURL}
+                alt={user?.displayName}
+                title={user?.displayName}
               />
             </div>
           )}

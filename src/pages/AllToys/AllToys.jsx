@@ -1,40 +1,80 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 const AllToys = () => {
-  
-  const [alltoys, setAlltoys] = useState([])
+  /*   const loadeAlltoys = useLoaderData(); */
+  /* console.log(loadeAlltoys) */
+
+  const [activeTab, setActiveTab] = useState("ascending");
+  const [alltoys, setAlltoys] = useState([]);
   const [displayCount, setDisplayCount] = useState(20);
   const [searchText, setSearchText] = useState("");
-
-    fetch(`http://localhost:5000/alltoys`)
-      .then((res) => res.json())
-      .then((data) => {
-       setAlltoys(data);
-      });
+  /*   console.log(searchText) */
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/getToysByText/${searchText}`)
+    fetch(`http://localhost:5000/getToyByText/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         setAlltoys(data);
+        console.log(data);
       });
   };
+  /* sort */
+  useEffect(() => {
+    fetch(`http://localhost:5000/toys/${activeTab}`)
+      .then((res) => res.json())
+      .then((result) => {
+        /* console.log(result); */
+        setAlltoys(result);
+      });
+  }, [activeTab]);
 
   const handleSeeMore = () => {
     setDisplayCount(alltoys?.length);
   };
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+  };
   return (
     <div>
       <h1 className="text-5xl text-center mt-10">All Toys</h1>
-      <div className=" p-2 text-center">
+      <div className="input-group flex justify-center mb-20">
         <input
           onChange={(e) => setSearchText(e.target.value)}
           type="text"
-          className="input input-bordered input-secondary w-48 "
+          placeholder="Search…"
+          className="input input-bordered"
         />{" "}
-        <button onClick={handleSearch} className="btn btn-primary">
-          Search
+        <button onClick={handleSearch} className="btn btn-square">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
         </button>
+      </div>
+      {/* sort */}
+      <div className="flex justify-center">
+        <div
+          onClick={() => handleTabClick("ascending")}
+          className="px-4 py-2 border bg-purple-700 rounded-lg m-2 cursor-pointer hover:bg-purple-400"
+        >
+          Ascending
+        </div>
+        <div
+          onClick={() => handleTabClick("descending")}
+          className="px-4 py-2 border bg-purple-700 rounded-lg m-2 cursor-pointer hover:bg-purple-300"
+        >
+          Discending
+        </div>
       </div>
       <div className="m-10">
         <table className="table-auto w-full bg-white shadow-md">
@@ -65,7 +105,7 @@ const AllToys = () => {
                 <td className="px-6 py-4">{toys.price}</td>
                 <td className="px-6 py-4">{toys.quantity}</td>
                 <td className="px-6 py-4">
-                <Link to={`/alltoys/${toys?._id}`}>
+                  <Link to={`/alltoys/${toys?._id}`}>
                     <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
                       View Details
                     </button>
