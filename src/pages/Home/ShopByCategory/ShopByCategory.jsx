@@ -1,43 +1,57 @@
-/*  import { useEffect, useState } from "react"; */
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
-import MathTab from "../MathTab/MathTab";
-import EngineeringTab from "../EngineeringTab/EngineeringTab";
-import ScienceTab from "../ScienceTab/ScienceTab";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Category from "../Category/Category";
 
 const ShopByCategory = () => {
-  const [tabIndex, setTabIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState("Math");
 
+  const [toys, setToys] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/alltoys1/${activeTab}`)
+      .then((res) => res.json())
+      .then((result) => {
+        /* console.log(result); */
+        setToys(result);
+      });
+  }, [activeTab]);
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+  };
+  const displayedToys = toys.slice(0, 2);
   return (
     <div className="lg:mx-32 lg:my-10 m-5">
-    <h2 className="text-3xl font-bold text-center mb-8">Shop by Category</h2>
-    <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-      <TabList className="flex justify-center">
-        <Tab className="px-4 py-2 border bg-purple-700 rounded-lg m-2 cursor-pointer hover:bg-purple-400">
-          Math Toys
-        </Tab>
-        <Tab className="px-4 py-2 border bg-purple-700 rounded-lg m-2 cursor-pointer hover:bg-purple-300">
-          Engineering Toys
-        </Tab>
-        <Tab className="px-4 py-2 border bg-purple-700 rounded-lg m-2 cursor-pointer hover:bg-purple-300">
-          Science Toys
-        </Tab>
-      </TabList>
+      <h2 className="text-3xl font-bold text-center mb-8">Shop by Category</h2>
+      <div>
+        <div className="flex justify-center">
+          <div
+            onClick={() => handleTabClick("Math")}
+            className="px-4 py-2 border bg-purple-700 rounded-lg m-2 cursor-pointer hover:bg-purple-400"
+          >
+            Math Toys
+          </div>
+          <div
+            onClick={() => handleTabClick("Engineering")}
+            className="px-4 py-2 border bg-purple-700 rounded-lg m-2 cursor-pointer hover:bg-purple-300"
+          >
+            Engineering Toys
+          </div>
+          <div
+            onClick={() => handleTabClick("Science")}
+            className="px-4 py-2 border bg-purple-700 rounded-lg m-2 cursor-pointer hover:bg-purple-300"
+          >
+            Science Toys
+          </div>
+        </div>
 
-      <TabPanel>
-        <MathTab tabIndex={tabIndex}></MathTab>
-      </TabPanel>
-
-      <TabPanel>
-        <EngineeringTab tabIndex={tabIndex}></EngineeringTab>
-      </TabPanel>
-      <TabPanel>
-        <ScienceTab tabIndex={tabIndex}></ScienceTab>
-      </TabPanel>
-    </Tabs>
-  </div>
+        <div className="flex flex-col ml-3 gap-4 md:flex-row md:justify-center my-10">
+          {displayedToys?.map((toy) => (
+            <Category key={toy._id} toy={toy}></Category>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 
