@@ -1,17 +1,22 @@
 import { useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
-
-
+import { Link } from "react-router-dom";
 const AllToys = () => {
-  const alltoys = useLoaderData();
+  
+  const [alltoys, setAlltoys] = useState([])
   const [displayCount, setDisplayCount] = useState(20);
   const [searchText, setSearchText] = useState("");
+
+    fetch(`http://localhost:5000/alltoys`)
+      .then((res) => res.json())
+      .then((data) => {
+       setAlltoys(data);
+      });
 
   const handleSearch = () => {
     fetch(`http://localhost:5000/getToysByText/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setAlltoys(data);
       });
   };
 
