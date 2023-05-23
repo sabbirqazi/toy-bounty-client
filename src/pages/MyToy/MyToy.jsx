@@ -5,6 +5,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
 
 import ToysRow from "./ToysRow";
+import useTitle from "../../hooks/useTitle";
 
 const MyToy = () => {
   const { user } = useContext(AuthContext);
@@ -23,7 +24,7 @@ const MyToy = () => {
   }, [user,url]);
 
   //update data for specific user
-
+  useTitle('MyToy')
   const handleDelete = (_id) => {
     Swal.fire({
       title: "Are you sure?",

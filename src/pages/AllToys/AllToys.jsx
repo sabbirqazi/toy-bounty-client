@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 const AllToys = () => {
   /*   const loadeAlltoys = useLoaderData(); */
   /* console.log(loadeAlltoys) */
@@ -34,6 +35,7 @@ const AllToys = () => {
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
+  useTitle('AllToys')
   return (
     <div>
       

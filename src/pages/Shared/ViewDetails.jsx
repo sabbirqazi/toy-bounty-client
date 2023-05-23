@@ -1,11 +1,12 @@
  /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 
 const ViewDetails = () => {
     const [toy, setToy] = useState({})
-    
+    useTitle('Details')
     const { id } = useParams()
     console.log(id)
     useEffect(() => {

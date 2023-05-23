@@ -5,6 +5,7 @@ import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import { AuthContext } from "../providers/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 
 const Login = () => {
@@ -42,7 +43,7 @@ const Login = () => {
 
  
 
-  
+  useTitle('Login')
 
   return (
     <> 

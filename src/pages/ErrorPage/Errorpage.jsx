@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Link, useRouteError } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 const ErrorPage = () => {
+  useTitle('Error')
   const { error } = useRouteError();
   return (
     <div>

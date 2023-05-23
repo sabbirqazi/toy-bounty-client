@@ -4,6 +4,7 @@
 
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import useTitle from "../hooks/useTitle";
 
 const UpdateToys = () => {
   const toy = useLoaderData();
@@ -39,7 +40,7 @@ const UpdateToys = () => {
         }
       });
   };
-
+  useTitle('UpdateToy')
   return (
     <div className="my-10">
       <form onSubmit={handleToyUpdate} className="flex flex-col space-y-5 justify-center items-center">

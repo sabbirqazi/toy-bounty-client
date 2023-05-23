@@ -1,4 +1,7 @@
+import useTitle from "../../hooks/useTitle";
+
 const Blog = () => {
+  useTitle('Blog')
   return (
     <div className="mx-auto my-10 max-w-2xl bg-gray-100 p-6">
    <h1 className="text-4xl font-bold text-center my-8">Blog For Full Stack Development</h1>
@@ -34,14 +37,14 @@ const Blog = () => {
       <div className="my-4">
         <h2 className="text-2xl font-bold mb-2">What is Nest.js?</h2>
         <p>
-          Nest.js is a progressive TypeScript-based web application framework that is built with a focus on developer productivity and scalability. It is inspired by Angular's architecture and uses decorators and modules to create highly maintainable and scalable server-side applications.
+          Nest.js is a progressive TypeScript-based web application framework that is built with a focus on developer productivity and scalability. It is inspired by Angular architecture and uses decorators and modules to create highly maintainable and scalable server-side applications.
         </p>
       </div>
       
       <div className="my-4">
         <h2 className="text-2xl font-bold mb-2">What is MongoDB aggregate and how does it work?</h2>
         <p>
-          MongoDB's aggregate function allows you to perform advanced data aggregation operations on a collection. It enables you to process and transform data using various stages such as filtering, grouping, sorting, and performing mathematical operations. Aggregation pipelines are defined as an array of stages, with each stage modifying the data as it passes through the pipeline.
+          MongoDBs aggregate function allows you to perform advanced data aggregation operations on a collection. It enables you to process and transform data using various stages such as filtering, grouping, sorting, and performing mathematical operations. Aggregation pipelines are defined as an array of stages, with each stage modifying the data as it passes through the pipeline.
         </p>
       </div>
     </div>

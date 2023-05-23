@@ -4,6 +4,7 @@ import React, { useContext, useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import { AuthContext } from "../providers/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 
 const Register = () => {
@@ -43,6 +44,7 @@ const Register = () => {
         });
     }
   };
+  useTitle('Register')
   return (
     <div className="my-10">
       <div className="w-full max-w-md mx-auto">

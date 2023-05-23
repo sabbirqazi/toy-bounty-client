@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 const AddToy = () => {
   const { user } = useContext(AuthContext);
   const {
@@ -35,7 +36,7 @@ const AddToy = () => {
       
    
   };
-
+  useTitle('AddToy')
   return (
     <div className="my-16 mx-auto flex flex-col items-center justify-center">
       <h1 className="text-5xl text-center font-bold mb-10">Add a new toy</h1>
