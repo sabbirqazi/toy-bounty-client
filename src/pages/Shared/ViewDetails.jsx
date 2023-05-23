@@ -20,9 +20,9 @@ const ViewDetails = () => {
     return (
         <div className="my-20">
         <div className="flex items-center justify-center">
-        <div className="flex items-center bg-gray-200 rounded shadow-lg p-8">
+        <div className="flex items-center gap-10 bg-[#A7D1D2] rounded shadow-lg p-8">
           <div className="w-1/2">
-            <img src={toy.photoUrl} alt={toy.name} className="w-full" />
+            <img src={toy.photoUrl} alt={toy.name} className="h-96 w-96" />
           </div>
           <div className="w-1/2 ml-8">
             <h1 className="text-3xl font-bold mb-4">{toy.name}</h1>
