@@ -9,7 +9,7 @@ const ViewDetails = () => {
     const { id } = useParams()
     console.log(id)
     useEffect(() => {
-        fetch(`http://localhost:5000/alltoys/${id}`)
+        fetch(`https://learning-toys-server.vercel.app/alltoys/${id}`)
           .then((res) => res.json())
           .then((data) => setToy(data));
           

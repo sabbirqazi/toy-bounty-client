@@ -38,7 +38,7 @@ const router = createBrowserRouter([
               {
                 path: "/alltoys",
                 element: <AllToys></AllToys>,
-              /*  loader: () => fetch(`http://localhost:5000/alltoys`)  */
+              
               },
                { path: "/alltoys/:id",
                 element: (
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
               {
                 path: "/mytoys/:id",
                 element: <UpdateToys></UpdateToys>,
-                loader: ({params}) => fetch(`http://localhost:5000/mytoys/${params.id}`)
+                loader: ({params}) => fetch(`https://learning-toys-server.vercel.app/mytoys/${params.id}`)
               },
             ]
     },

@@ -19,7 +19,7 @@ const UpdateToys = () => {
 
     const updatedToy = { price, quantity, details };
 
-    fetch(`http://localhost:5000/mytoys/${_id}`, {
+    fetch(`https://learning-toys-server.vercel.app/mytoys/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -28,7 +28,7 @@ const UpdateToys = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        
         if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Success!",

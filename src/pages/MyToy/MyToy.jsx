@@ -10,7 +10,7 @@ const MyToy = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
   const {_id} =toys;
-  const url = `http://localhost:5000/mytoys?selleremail=${user?.email}`;
+  const url = `https://learning-toys-server.vercel.app/mytoys?selleremail=${user?.email}`;
   /*  const [control, setControl] = useState(false); */
   //get the data using email for specific user
   useEffect(() => {
@@ -35,7 +35,7 @@ const MyToy = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/mytoys/${_id}`, {
+        fetch(`https://learning-toys-server.vercel.app/mytoys/${_id}`, {
           method: "DELETE"
         })
           .then((res) => res.json())

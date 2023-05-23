@@ -11,7 +11,7 @@ const AllToys = () => {
   /*   console.log(searchText) */
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/getToyByText/${searchText}`)
+    fetch(`https://learning-toys-server.vercel.app/getToyByText/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         setAlltoys(data);
@@ -20,7 +20,7 @@ const AllToys = () => {
   };
   /* sort */
   useEffect(() => {
-    fetch(`http://localhost:5000/toys/${activeTab}`)
+    fetch(`https://learning-toys-server.vercel.app/toys/${activeTab}`)
       .then((res) => res.json())
       .then((result) => {
         /* console.log(result); */
