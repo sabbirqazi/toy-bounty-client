@@ -15,7 +15,7 @@ const ToysRow = ({ toy, index, handleDelete }) => {
       <td className="px-6 py-4">{quantity}</td>
       <td className="px-6 py-4">
         <Link to={`/mytoys/${_id}`}>
-          <button className="btn btn-primary ">Edit</button>
+          <button className="btn-main ">Edit</button>
         </Link>
       </td>
       <td className="px-6 py-4">

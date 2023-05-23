@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn-main{
+ @apply bg-[#19A7CE]  px-20 py-2 text-sm font-semibold rounded-full
+   }
+.btn-second{
+  @apply bg-[#033540] text-white px-4 py-2 border rounded-full  cursor-pointer
+}

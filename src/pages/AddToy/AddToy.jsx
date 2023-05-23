@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../providers/AuthProvider";
+import Swal from "sweetalert2";
 const AddToy = () => {
   const { user } = useContext(AuthContext);
   const {
+    
     register,
     handleSubmit,
     formState: { errors },
@@ -18,9 +20,20 @@ const AddToy = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
+          
+        if (result.acknowledged
+          === true) {
+          Swal.fire({
+            title: "Success!",
+            text: "Toy Added Successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+        
       });
-
-    console.log(data);
+      
+   
   };
 
   return (
@@ -40,7 +53,7 @@ const AddToy = () => {
               <input
                 {...register("name")}
                 placeholder="Name of Toy"
-                className="input input-bordered input-secondary w-96"
+                className="input input-bordered input-info w-96"
               />
             </div>
             <div>
@@ -50,7 +63,7 @@ const AddToy = () => {
               <input
                 {...register("photoUrl", { required: true })}
                 placeholder="Photo URL"
-                className="input input-bordered input-secondary w-96 "
+                className="input input-bordered input-info w-96 "
               />
             </div>
             <div>
@@ -61,7 +74,7 @@ const AddToy = () => {
                 {...register("sellername")}
                 value={user?.displayName}
                 placeholder="Seller Name"
-                className="input input-bordered input-secondary w-96"
+                className="input input-bordered input-info w-96"
               />
             </div>
             <div>
@@ -72,7 +85,7 @@ const AddToy = () => {
                 {...register("selleremail", { required: true })}
                 value={user?.email}
                 placeholder="Seller Email"
-                className="input input-bordered input-secondary w-96 "
+                className="input input-bordered input-info w-96 "
               />
             </div>
             <div>
@@ -82,7 +95,7 @@ const AddToy = () => {
               <input
                 {...register("sellerphone", { required: true })}
                 placeholder="Seller Phone"
-                className="input input-bordered input-secondary w-96 "
+                className="input input-bordered input-info w-96 "
               />
             </div>
           </div>
@@ -94,18 +107,14 @@ const AddToy = () => {
                 <span>Sub Category</span>
               </label>
               <select
-                className="input input-bordered input-secondary w-96"
+                className="input input-bordered input-info w-96"
                 {...register("subcategory")}
               >
                 <option value="Math">Math</option>
                 <option value="Science">Science</option>
                 <option value="Engineering">Engineering</option>
               </select>
-              {/*    <input
-          {...register("subcategory", { required: true })}
-          placeholder="Sub Category"
-          className="input input-bordered input-secondary w-96 "
-        /> */}
+        
             </div>
             <div>
               <label className="label">
@@ -114,7 +123,7 @@ const AddToy = () => {
               <input
                 {...register("price", { required: true })}
                 placeholder="Price"
-                className="input input-bordered input-secondary w-96 "
+                className="input input-bordered input-info w-96 "
               />
             </div>
             <div>
@@ -124,7 +133,7 @@ const AddToy = () => {
               <input
                 {...register("quantity", { required: true })}
                 placeholder="Available Quantity"
-                className="input input-bordered input-secondary w-96 "
+                className="input input-bordered input-info w-96 "
               />
             </div>
             <div>
@@ -134,7 +143,7 @@ const AddToy = () => {
               <input
                 {...register("rating", { required: true })}
                 placeholder="Ratings"
-                className="input input-bordered input-secondary w-96 "
+                className="input input-bordered input-info w-96 "
               />
             </div>
             <div>
@@ -144,12 +153,12 @@ const AddToy = () => {
               <input
                 {...register("details", { required: true })}
                 placeholder="Details Description"
-                className="input input-bordered input-secondary w-96 "
+                className="input input-bordered input-info w-96 "
               />
             </div>
           </div>
         </div>
-        <input className="btn btn-primary " type="submit" />
+        <input className="btn-main cursor-pointer" type="submit" />
       </form>
     </div>
   );

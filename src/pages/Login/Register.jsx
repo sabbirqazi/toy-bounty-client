@@ -44,14 +44,11 @@ const Register = () => {
     }
   };
   return (
-    <div className="mt-10">
+    <div className="my-10">
       <div className="w-full max-w-md mx-auto">
         <div>
-          <h2 className="text-center text-3xl font-semibold mb-5">
-            Please Register Here...
-          </h2>
         </div>
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <form className="bg-white shadow-md rounded px-8 pt-3 pb-4">
           <h2 className="text-2xl font-bold mb-4">Please Register</h2>
           {error && (
             <p className="text-red-500 text-sm mb-4">
@@ -136,7 +133,7 @@ const Register = () => {
             </button>
           </div>
           <SocialLogin></SocialLogin>
-          <p className="p-5 text-xl text-center">
+          <p className="p-3 text-xl text-center">
             Have already an account?
             <Link to="/login">
               <span className=" text-sky-600"> Login here...</span>

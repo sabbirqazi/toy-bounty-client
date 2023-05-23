@@ -3,7 +3,7 @@ import logo from "../../assets/logo.svg"
 const Footer = () => {
     return (
         <div>
-          <footer className="footer py-6 px-20 bg-black bottom-0  text-neutral-content">
+          <footer className="footer py-6 px-20 bg-[#033540] bottom-0  text-neutral-content">
             
   <div>
   <div className="flex justify-center items-center gap-1" >

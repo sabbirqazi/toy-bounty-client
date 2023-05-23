@@ -41,10 +41,10 @@ const UpdateToys = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleToyUpdate} className="flex flex-col space-y-5">
-        <div className="flex gap-10">
-          <div className="form-control md:w-1/2">
+    <div className="my-10">
+      <form onSubmit={handleToyUpdate} className="flex flex-col space-y-5 justify-center items-center">
+        <div className="flex flex-col justify-center items-center">
+          <div className="form-control">
             <label className="label">
               <span className="label-text">Price</span>
             </label>
@@ -54,11 +54,11 @@ const UpdateToys = () => {
                 name="price"
                 defaultValue={price}
                 placeholder="Price"
-                className="input input-bordered w-full"
+                className="input input-info w-96"
               />
             </label>
           </div>
-          <div className="form-control md:w-1/2 ml-4">
+          <div className="form-control">
             <label className="label">
               <span className="label-text">Available Quantity</span>
             </label>
@@ -68,11 +68,11 @@ const UpdateToys = () => {
                 name="quantity"
                 defaultValue={quantity}
                 placeholder="Available Quantity"
-                className="input input-bordered w-full"
+                className="input input-info w-96"
               />
             </label>
           </div>
-          <div className="form-control md:w-1/2 ml-4">
+          <div className="form-control ">
             <label className="label">
               <span className="label-text">Details</span>
             </label>
@@ -82,12 +82,12 @@ const UpdateToys = () => {
                 name="details"
                 defaultValue={details}
                 placeholder="Details"
-                className="input input-bordered w-full"
+                className="input input-info w-96"
               />
             </label>
           </div>
         </div>
-        <input className="btn btn-primary" type="submit" value="Update Toy" />
+        <input className="btn-main cursor-pointer" type="submit" value="Update Toy" />
       </form>
     </div>
   );

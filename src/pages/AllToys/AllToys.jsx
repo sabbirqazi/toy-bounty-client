@@ -36,8 +36,9 @@ const AllToys = () => {
   };
   return (
     <div>
-      <h1 className="text-5xl text-center mt-10">All Toys</h1>
-      <div className="input-group flex justify-center mb-20">
+      
+      <div className="input-group flex justify-center my-10">
+        
         <input
           onChange={(e) => setSearchText(e.target.value)}
           type="text"
@@ -62,16 +63,18 @@ const AllToys = () => {
         </button>
       </div>
       {/* sort */}
+      <h1 className="text-center text-md">Sorting...</h1>
       <div className="flex justify-center">
+
         <div
           onClick={() => handleTabClick("ascending")}
-          className="px-4 py-2 border bg-purple-700 rounded-lg m-2 cursor-pointer hover:bg-purple-400"
+          className="px-4 py-2 border btn-main rounded-lg m-2 cursor-pointer "
         >
           Ascending
         </div>
         <div
           onClick={() => handleTabClick("descending")}
-          className="px-4 py-2 border bg-purple-700 rounded-lg m-2 cursor-pointer hover:bg-purple-300"
+          className="px-4 py-2 border btn-main rounded-lg m-2 cursor-pointer "
         >
           Discending
         </div>
@@ -106,7 +109,7 @@ const AllToys = () => {
                 <td className="px-6 py-4">{toys.quantity}</td>
                 <td className="px-6 py-4">
                   <Link to={`/alltoys/${toys?._id}`}>
-                    <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+                    <button className=" btn-second">
                       View Details
                     </button>
                   </Link>
@@ -118,7 +121,7 @@ const AllToys = () => {
       </div>
 
       <div className="text-center my-5">
-        <button onClick={handleSeeMore} className="btn btn-primary">
+        <button onClick={handleSeeMore} className="btn-main">
           See More
         </button>
       </div>

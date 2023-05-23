@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { FcGoogle } from "react-icons/fc";
 import  { useContext } from "react";
 
 import { useLocation, useNavigate } from "react-router-dom";
@@ -24,14 +25,11 @@ const SocialLogin = () => {
 
   return (
     <>
-      <div className="flex flex-col my-5 gap-5">
-        <button
-          onClick={handleGoogleLogin}
-          type="button"
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2"
-        >
-          Google
-        </button>
+      <div className="flex flex-col my-5 gap-5 justify-center items-center">
+       
+      <button className="text-center">
+      <FcGoogle className="h-10 w-10" onClick={handleGoogleLogin}></FcGoogle>
+      </button>
       
       </div>
     </>
